@@ -52,7 +52,7 @@ def countfiles(dictfiles, lsttokens, repo):
                 for filenameObj in filesjson:
                     filename = filenameObj['filename']
                     # only track source files
-                    allowed_extensions = ['.java', '.js', '.ts', '.tsx', '.kt']
+                    allowed_extensions = ['.java', '.js', '.ts', '.tsx', '.kt', '.c', '.cpp']
                     if not filename.endswith(tuple(allowed_extensions)):
                         continue
                     if filename not in dictfiles:
@@ -82,7 +82,7 @@ repo = 'scottyab/rootbeer'
 # Remember to empty the list when going to commit to GitHub.
 # Otherwise they will all be reverted and you will have to re-create them
 # I would advise to create more than one token for repos with heavy commits
-lstTokens = ["secret"]
+lstTokens = ["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"]
 
 dictfiles = dict()
 countfiles(dictfiles, lstTokens, repo)
