@@ -28,7 +28,7 @@ def countfiles(dictfiles, lsttokens, repo):
     ipage = 1  # url page counter
     ct = 0  # token counter
 
-    source_extensions = ['.java', '.kt', 'c']
+    source_extensions = ['.java', '.kt', '.gradle', '.xml', '.pro', 'c', 'c++']
 
     try:
         # loop though all the commit pages until the last returned empty page
@@ -67,7 +67,7 @@ repo = 'scottyab/rootbeer'
 # Remember to empty the list when going to commit to GitHub.
 # Otherwise they will all be reverted and you will have to re-create them
 # I would advise to create more than one token for repos with heavy commits
-lstTokens = ["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"]
+lstTokens = ["Secret :3"]
 
 dictfiles = dict()
 countfiles(dictfiles, lstTokens, repo)

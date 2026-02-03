@@ -27,7 +27,7 @@ def collect_author_file_touches(lsttokens, repo):
     file_data = []  # Store tuples of (filename, author, date, weeks_since_start)
     
     # Define source file extensions (same as CollectFiles)
-    source_extensions = ['.java', '.kt', '.gradle', '.xml', '.pro']
+    source_extensions = ['.java', '.kt', '.gradle', '.xml', '.pro', 'c', 'c++']
     
     # Get the first commit date to calculate weeks
     first_commit_url = 'https://api.github.com/repos/' + repo + '/commits?per_page=1&page=1'
@@ -88,7 +88,7 @@ def collect_author_file_touches(lsttokens, repo):
 
 # Main execution
 repo = 'scottyab/rootbeer'
-lstTokens = ["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"]  # Replace with your token
+lstTokens = ["Secret Secret very secret"]  # Replace with your token
 
 print("Collecting author and file touch data...")
 file_touches, start_date = collect_author_file_touches(lstTokens, repo)
