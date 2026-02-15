@@ -100,6 +100,39 @@ Each test should include:
 # - Ensure all expected fields are included in the output.
 # Target Method: to_dict()
 
+# ===========================
+# Test: Account Serialization (to_dict)
+# Author: Tri Tran
+# Date: 2026-02-15
+# Description: Ensure the account object is correctly serialized to a
+#   dictionary with all expected fields.
+# ===========================
+def test_account_serialization_to_dict(setup_account):
+    """Test that the account object is correctly serialized to a dictionary"""
+
+    account = setup_account     # Get the Account object from the fixture
+
+    result = account.to_dict()  # Test target method
+
+    # 1. Verify that the result is a dictionary
+    assert isinstance(result, dict)
+
+    # 2. Verify that all expected fields (see models/account.py) are included
+    # in the output
+    expected_fields = {"id", "name", "email", "phone_number", "disabled",
+                       "date_joined", "balance", "role"}
+    assert set(result.keys()) == expected_fields
+
+    # 3. Verify that the dictionary values match the object's attributes
+    assert result["id"] == account.id
+    assert result["name"] == account.name
+    assert result["email"] == account.email
+    assert result["phone_number"] == account.phone_number
+    assert result["disabled"] == account.disabled
+    assert result["date_joined"] == account.date_joined
+    assert result["balance"] == account.balance
+    assert result["role"] == account.role
+
 # Student 2: Test invalid email input
 # - Ensure invalid email formats raise a validation error.
 # Target Method: validate_email()
