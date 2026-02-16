@@ -17,12 +17,7 @@ jobs:
       - name: Set Up Python
         uses: actions/setup-python@v4
         with:
-          # === Original:
-          # python-version: "3.9"  # Ensure consistency in Python version
-          # === End of Original
-
-          # Use the Python version from the matrix
-          python-version: ${{ matrix.python-version }}
+          python-version: "3.9"  # Ensure consistency in Python version
 
       - name: Install Dependencies
         run: |

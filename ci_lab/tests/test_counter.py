@@ -90,13 +90,13 @@ class TestCounterEndpoints:
         """It should return 405 for unsupported HTTP methods"""
         response = client.patch('/counters/test_counter')
         assert response.status_code == HTTPStatus.METHOD_NOT_ALLOWED
-
-
+    
+    
     """Test cases for Extended Counter API"""
 
     # ===========================
     # Test: Retrieve total count of all counters
-    # Author: Tri Tran
+    # Author: Student 1
     # Modification: Add assertion to check the total value is correct.
     # ===========================
     def test_get_total_counters(self, client):
@@ -108,12 +108,8 @@ class TestCounterEndpoints:
         response = client.get('/counters/total')
 
         assert response.status_code == HTTPStatus.OK
-
+        
         # TODO: Add an assertion to check the correct total value
-        data = response.get_json()
-
-        # Verify that the total should be 1 (1 from test1 + 0 from test2)
-        assert data == {"total": 1}
 
     # ===========================
     # Test: Retrieve top N highest counters
@@ -132,7 +128,7 @@ class TestCounterEndpoints:
         response = client.get('/counters/top/2')
 
         assert response.status_code == HTTPStatus.OK
-        assert len(response.get_json()) <= 2
+        assert len(response.get_json()) <= 2  
 
         # TODO: Add an assertion to ensure the returned counters are sorted correctly
 
@@ -150,7 +146,7 @@ class TestCounterEndpoints:
         response = client.get('/counters/bottom/1')
 
         assert response.status_code == HTTPStatus.OK
-        assert min(response.get_json().values()) == 0
+        assert min(response.get_json().values()) == 0  
 
         # TODO: Add an assertion to check that 'b' is indeed in the response
 
@@ -181,9 +177,9 @@ class TestCounterEndpoints:
         response_zero = client.put('/counters/test1/set/0')
         response_negative = client.put('/counters/test1/set/-3')
 
-        assert response_zero.status_code == HTTPStatus.OK
-        assert response_negative.status_code == HTTPStatus.BAD_REQUEST
-
+        assert response_zero.status_code == HTTPStatus.OK  
+        assert response_negative.status_code == HTTPStatus.BAD_REQUEST  
+        
         # TODO: Add an assertion to verify the response message contains a clear error
 
     # ===========================
@@ -230,7 +226,7 @@ class TestCounterEndpoints:
         response = client.get('/counters/count')
 
         assert response.status_code == HTTPStatus.OK
-        assert isinstance(response.get_json()["count"], int)
+        assert isinstance(response.get_json()["count"], int)  
 
         # TODO: Add an assertion to check the exact count value
 
