@@ -7,16 +7,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest  # Use the latest Ubuntu runner
-    # === Original:
     defaults:
       run:
         working-directory: ci_lab  # Set the default working directory for all steps
-    # === End of Original
-
-    strategy:
-      matrix:
-        # Define a matrix for Python versions
-        python-version: ["3.9", "3.10", "3.11"]
 
     steps:
       - name: Checkout Repository
