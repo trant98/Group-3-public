@@ -281,3 +281,23 @@ class TestCounterEndpoints:
         assert response.status_code == HTTPStatus.BAD_REQUEST
 
         # TODO: Add an assertion to verify the error message specifically says 'Invalid counter name'S
+
+    # ===========================
+    # Test: Call GET after DELETE returns 404
+    # Author: Tri Tran
+    # ===========================
+    def test_get_after_delete_returns_404(self, client):
+        """It should return 404 when retrieving a deleted counter"""
+        client.post('/counters/to_delete')
+
+        # Delete the counter
+        delete_resp = client.delete('/counters/to_delete')
+
+        # Assert the delete response is successful
+        assert delete_resp.status_code == HTTPStatus.NO_CONTENT
+
+        # Try to retrieve the deleted counter
+        get_resp = client.get('/counters/to_delete')
+
+        # Assert that the get response returns 404
+        assert get_resp.status_code == HTTPStatus.NOT_FOUND
