@@ -8,9 +8,9 @@ jobs:
   build:
     runs-on: ubuntu-latest  # Use the latest Ubuntu runner
     # === Original:
-    # defaults:
-    #   run:
-    #     working-directory: ci_lab  # Set the default working directory for all steps
+    defaults:
+      run:
+        working-directory: ci_lab  # Set the default working directory for all steps
     # === End of Original
 
     strategy:
