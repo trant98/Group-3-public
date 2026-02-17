@@ -314,3 +314,15 @@ class TestCounterEndpoints:
 
         assert response.status_code == HTTPStatus.NOT_FOUND
         assert response.get_json() == {"error": "No counters available"}
+
+    # ===========================
+    # Test: CI Debug Intentional Failure
+    # Author: Tri Tran
+    # Description: Intentionally fails to demonstrate CI debugging workflow.
+    # ===========================
+    def test_intentional_failure(self, client):
+        """This test is designed to fail to demonstrate CI debugging."""
+        # assert False, "This is an intentional failure for CI debugging demonstration."
+
+        # uncomment the above line to see the failure in CI
+        assert True # otherwise, this test will pass and not demonstrate the failure scenario.
