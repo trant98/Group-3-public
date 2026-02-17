@@ -301,3 +301,16 @@ class TestCounterEndpoints:
 
         # Assert that the get response returns 404
         assert get_resp.status_code == HTTPStatus.NOT_FOUND
+
+    # ===========================
+    # Test: /counters/top/<n> returns 404 when no counters exist
+    # Author: Tri Tran
+    # ===========================
+    def test_top_n_counters_empty_returns_404(self, client):
+        """It should return 404 when requesting top counters with none available"""
+        client.post("/counters/reset")  # ensure COUNTERS is empty
+
+        response = client.get("/counters/top/2")
+
+        assert response.status_code == HTTPStatus.NOT_FOUND
+        assert response.get_json() == {"error": "No counters available"}
