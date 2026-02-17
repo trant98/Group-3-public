@@ -322,4 +322,7 @@ class TestCounterEndpoints:
     # ===========================
     def test_intentional_failure(self, client):
         """This test is designed to fail to demonstrate CI debugging."""
-        assert False, "This is an intentional failure for CI debugging demonstration."
+        # assert False, "This is an intentional failure for CI debugging demonstration."
+
+        # uncomment the above line to see the failure in CI
+        assert True # otherwise, this test will pass and not demonstrate the failure scenario.
